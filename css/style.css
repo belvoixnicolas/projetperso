@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background: url('../img/background.jpg') bottom right no-repeat;
+  background-size: cover;
+  height: calc(100vh);
+}
+
+img {
+  height: 200px;
+  opacity: .9;
+  filter: invert(100%);
+}
+
+h1 {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 6rem;
+  font-weight: lighter;
+  letter-spacing: 15px;
+  color: rgba(255, 255, 255, .8);
+}
