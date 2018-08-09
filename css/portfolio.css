@@ -1,0 +1,174 @@
+@import 'reset.css';
+@import 'scroll.css';
+@import 'type_tuile.css';
+
+body {
+    background: url('../img/background.jpg') bottom right no-repeat fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+header {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 10vh 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 6rem;
+}
+
+header p {
+    font-size: 3rem;
+    display: inline;
+    align-self: flex-start;
+    justify-self: center;
+    margin: 0 10vw;
+}
+
+.scroller {
+    justify-self: center;
+    align-self: flex-end;
+    margin-left: 75px;
+}
+
+main {
+    background: rgb(255, 255, 255);
+    min-height: 100vh;
+    padding: 2vh;
+}
+
+menu {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 5px 5px 10px 0 gray;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    height: 7vh;
+    margin-bottom: 5vh;
+}
+
+menu button {
+    align-items: center;
+    background: rgb(28, 123, 212);
+    color: white;
+    font-size: 2rem;
+    border: none;
+    border-radius: 5px;
+    width: 20vw;
+    margin: 0 5%;
+    padding: .5vh 1vw;
+    cursor: pointer;
+    transition: .5s;
+}
+
+menu button:hover {
+    background: rgb(16, 126, 34);
+}
+
+#projet {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+#projet section {
+    position: relative;
+    margin: 1vw;
+    box-shadow: 2px 2px 10px 0 lightgray;
+    border: 1px solid rgba(128, 128, 128, 0.253);
+    transition: .5s;
+}
+
+#projet section:hover {
+    box-shadow: 5px 5px 10px 0 gray;
+    border: 1px solid lightgray;
+}
+
+#projet img {
+    width: 20vw;
+}
+
+#projet div {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+    background: rgba(0, 0, 0, .3);
+    height: 100%;
+    width: 100%;
+}
+
+#projet h2 {
+    font-size: 3rem;
+}
+
+#projet a {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    background: rgb(28, 123, 212);
+    box-shadow: inset -1px -1px 10px 0 rgba(0, 0, 0, 0.5);
+    color: white;
+    height: 25%;
+    width: 50%;
+    text-decoration: none;
+    font-size: 2rem;
+    border-radius: 20px;
+    transition: .5s;
+}
+
+#projet a:hover {
+    background: rgb(16, 126, 34);
+}
+
+i {
+    margin-right: 4%;
+}
+
+#tips {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+#tips a {
+    text-decoration: none;
+    color: black;
+}
+
+#tips h2 {
+    height: 30%;
+    font-size: 3rem;
+    padding: 1vh 0 0 2vh;
+}
+#tips p {
+    max-height: 70%;
+    font-size: 2rem;
+    padding: 0 2vh;
+}
+
+#tips section {
+    width: calc(100% + 4vh);
+    height: 15vh;
+    margin-left: -2vh;
+    transition: .5s;
+}
+
+#tips section:hover {
+    background: url('../img/tips.png') no-repeat;
+    background-position: 30% 40%;
+    background-size: cover;
+    box-shadow: inset 0 0 50px 0 rgba(0, 0, 0, 0.788);
+}
+

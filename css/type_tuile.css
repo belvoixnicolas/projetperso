@@ -1,0 +1,19 @@
+.html {
+    background: rgba(240, 101, 41, 0.9) url('../img/html.png') center no-repeat;
+    background-size: 10vh;
+}
+
+.css {
+    background: hsla(222, 95%, 83%, 0.9) url('../img/css.png') center no-repeat;
+    background-size: 10vh;
+}
+
+.javascript {
+    background: hsla(45, 86%, 95%, 0.9) url('../img/javascript.png') center no-repeat;
+    background-size: 10vh;
+}
+
+.php {
+    background: hsla(229, 46%, 64%, 0.9) url('../img/php.png') center no-repeat;
+    background-size: 15vh;
+}
