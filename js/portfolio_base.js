@@ -41,6 +41,10 @@ jQuery(document).ready(function(){
     });
 
     $(window).scroll(function() {
+        var header = document.getElementsByTagName('header')[0].style.display;
         
+        if (header != 'none') {
+            $('header').hide(1000);
+        }
     });
 });
