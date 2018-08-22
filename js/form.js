@@ -14,7 +14,7 @@ jQuery(document).ready(function(){
 
     $('#img').click(function() {
         var ligne = document.querySelectorAll('.main div').length;
-        $('.main .' + ligne).append('<img src="" alt="photo">');
+        $('.main .' + ligne).append('<img src="img/" alt="photo">');
         $('#fichier').append('<input type="file" name="' + x + '">');
         x++;
     });
@@ -26,6 +26,8 @@ jQuery(document).ready(function(){
 
     $('#envoyer').click(function() {
         var fichier = document.querySelector('.main').innerHTML;
+        var nombreImg = document.querySelectorAll('#fichier input').length;
+        
         $('.tips').append('<textarea name="text">' + fichier + '</textarea>');
         document.querySelector('.tips').submit();
     });
