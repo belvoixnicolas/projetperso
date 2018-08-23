@@ -1,5 +1,27 @@
 <?php
     include 'connect.php';
+
+    $sql = 'SELECT titre, header, description FROM tips WHERE ID = "' . $_GET['id'] . '"';
+    $req = $dbh -> query($sql);
+    $tips = $req -> fetch();
+
+    $sql = 'SELECT text FROM text WHERE ID_tips = "' . $_GET['id'] . '"';
+    $req = $dbh -> query($sql);
+    $text = $req -> fetch();
+
+    $sources = array();
+    $sql = 'SELECT ID_image FROM ilustre_tips WHERE ID = "' . $_GET['id'] . '"';
+    foreach ($dbh->query($sql) as $source) {
+      $sql = 'SELECT source FROM image WHERE ID = "' . $source[0] . '"';
+      $req = $dbh -> query($sql);
+      $source = $req -> fetch();
+      $sources[] = $source[0];
+    }
+
+    $titre = $tips[0];
+    $header = $tips[1];
+    $descript = $tips[2];
+    $text = $text[0];
 ?>
 <!DOCTYPE HTML>
   <html lang="fr">
@@ -29,6 +51,17 @@
       <link rel="stylesheet" type="text/css" href="css/portfolio.css" />
     </head>
     <body>
-        
+      <?php if (isset($titre) && isset($header) && isset($descript) && isset($text)) { ?>
+      <header style="background-image: url('img/tips_head/<?php echo $header ?>');">
+        <h1><?php echo $titre; ?></h1>
+        <p><?php echo $descript; ?></p>
+      </header>
+      <main>
+        <?php echo $text; ?>
+      </main>
+      <?php }else {
+        echo '<main><p>ERREUR PAGES CASSER!</p></main>';
+      } ?>
     </body>
+    <script><?php include 'js/tips.js' ?></script>
   </html>

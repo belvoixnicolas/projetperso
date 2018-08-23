@@ -48,13 +48,9 @@
                 <button id="bouton_tips"><i class="far fa-star"></i>Mes tips</button>
             </menu>
             <article id="projet">
-                <?php foreach ($dbh -> query('SELECT * FROM projet') as $projet) { 
-                    $sql = 'SELECT source FROM image WHERE ID = '. $projet[3];
-                    $req = $dbh -> query($sql);
-                    $img = $req -> fetch();
-                ?>
+                <?php foreach ($dbh -> query('SELECT * FROM projet') as $projet) { ?>
                 <section>
-                    <img src="img/<?php echo $img[0]; ?>">
+                    <img src="img/<?php echo $projet[3]; ?>">
 
                     <div>
                         <h2><?php echo $projet[1]; ?></h2>

@@ -14,7 +14,7 @@ jQuery(document).ready(function(){
 
     $('#img').click(function() {
         var ligne = document.querySelectorAll('.main div').length;
-        $('.main .' + ligne).append('<img src="img/" alt="photo">');
+        $('.main .' + ligne).append('<img src="img/contenu/" alt="photo">');
         $('#fichier').append('<input type="file" name="' + x + '">');
         x++;
     });

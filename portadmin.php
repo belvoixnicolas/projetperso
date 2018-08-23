@@ -89,19 +89,11 @@
                     'source' => $_FILES[$i]['name']
                 ));
 
-                $sql = 'SELECT * FROM `image` WHERE source = AAA.JPG';
-                foreach ($dbh->query($sql) as $test) {
-                    echo $test[0];
-                }
-                /*$req = $dbh -> query($sql);
-                while ($idImg = $req -> fetch()) {
-                    echo $idImg['ID'];
-                }
+                $sql = 'SELECT ID FROM image WHERE source = "' . $_FILES[$i]['name'] . '"';
+                $req = $dbh -> query($sql);
                 $idImg = $req -> fetch();
-                $truc = $idImg['ID'];
-                echo $truc;*/
 
-                $sql = 'SELECT id FROM tips WHERE titre = '. $_POST['titre'];
+                $sql = 'SELECT id FROM tips WHERE titre = "' . $_POST['titre'] . '"';
                 $req = $dbh -> query($sql);
                 $idTips = $req -> fetch();
 
@@ -114,6 +106,18 @@
                  $i++;
             }
             // upload image //
+
+            // upload text //
+            $sql = 'SELECT id FROM tips WHERE titre = "' . $_POST['titre'] . '"';
+                $req = $dbh -> query($sql);
+                $idTips = $req -> fetch();
+                
+            $req = $dbh->prepare('INSERT INTO `text`(`ID`, `text`, `ID_tips`) VALUES (NULL, :contenu, :idtips)');
+            $req->execute(array(
+                'contenu' => $_POST['text'],
+                'idtips' => $idTips[0]
+            ));
+            // upload text //
         }
         // Verification //
     }
