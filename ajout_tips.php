@@ -175,5 +175,5 @@
             </form>
         </main>
     </body>
-    <script type="text/javascript"><?php include 'js/form.js'?></script>
+    <script src="js/form_tips.js"></script>
   </html>
