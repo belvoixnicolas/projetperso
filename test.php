@@ -3,7 +3,7 @@
 $ftp_server = 'localhost';
 $ftp_user_name="test";
 $ftp_user_pass="";
-$rep = "C:\\Users\\Nicolas\\Documents\\papier\\banque\\relever\\2018\\";
+$rep = "C:\\Users\\Nicolas\\Documents\\papier\\banque\\relever\\2018\\Poste\\";
 $dir = opendir($rep);
 
 
@@ -32,7 +32,7 @@ $login_result = ftp_login($conn_id, "$ftp_user_name", "$ftp_user_pass");
         }else {
             $source_file= $rep . $f;
     $destination_file="/test/".$f;
-            $upload = ftp_mkdir($conn_id, $source_file);
+            $upload = ftp_mkdir($conn_id, $destination_file, $source_file);
         }
     }
 

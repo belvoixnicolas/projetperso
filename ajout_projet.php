@@ -1,5 +1,53 @@
 <?php
-include 'test.php';
+include 'connect.php';
+
+if ($_GET['form'] == 'local') {
+    if (isset($_POST['titre']) && isset($_FILES['image'])) {
+        // Verif //
+        $erreur = 0;
+
+        foreach ($dbh->query('SELECT titre, image FROM projet') as $verif) {
+            if ($_POST['titre'] == $verif[0] || $_FILES['image']['name'] == $verif[1]) {
+                echo '<h2 id="erreur">ERREUR!</h2>'
+                $erreur++;
+            }
+        }
+
+        if ($_FILES['image']['error'] > 0) {
+            echo "Erreur lors du transfert";
+            $erreur++;
+         }else {
+           $extensions = array('jpg' , 'jpeg' , 'gif', 'png');
+           $extansions_fichier = strtolower(substr(strrchr($_FILES['image']['name'] , '.') , 1));
+           if ( in_array($extansions_fichier,$extensions) ) {
+             $nom = "img/projet/{$_FILES['image']['name']}";
+             $resultat = move_uploaded_file($_FILES['image']['tmp_name'],$nom);
+             if ($resultat) {
+               echo "Transfert réussi";
+               $erreur++;
+             }else {
+               echo 'Transfert échouer';
+               $erreur++;
+             }
+           }else {
+             echo'movaise extansions';
+             $erreur++;
+           }
+         }
+
+        if ($erreur == 0) {
+            $req = $dbh->prepare('INSERT INTO `projet`(`ID`, `titre`, `lien`, `image`) VALUES (NULL, :titre, :lien, :image)');
+            $req->execute(array(
+                'titre' => $_POST['titre'],
+                'lien' =>  'local/' . $_POST['titre'],
+                'image' => $_FILES['image']['name']
+            ));
+        }
+        // Verif //
+    }
+}elseif ($_GET['form'] == 'distant') {
+    echo '<p>Rien pour l\'instant</p>';
+}
 ?>
 <!DOCTYPE HTML>
   <html lang="fr">
@@ -42,7 +90,7 @@ include 'test.php';
                         <input type="url" name="lien" placeholder="Lien du projet">
                     </fieldset>
                     <fieldset id="local">
-                        <input type="file" name="fichier" webkitdirectory mozdirectory msdirectory odirectory directory multiple="multiple">
+                        <!-- <input type="file" name="fichier" webkitdirectory mozdirectory msdirectory odirectory directory multiple="multiple"> -->
                         <input type="file" name="sql">
                     </fieldset>
                     <input type="button" id="boutton_submit" value="Envoyer">
@@ -50,5 +98,5 @@ include 'test.php';
             </form>
         </main>
     </body>
-    <script src="js/form_projet.js"></script>
+    <script><?php include 'js/form_projet.js'; ?></script>
   </html>

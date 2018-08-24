@@ -50,7 +50,7 @@
             <article id="projet">
                 <?php foreach ($dbh -> query('SELECT * FROM projet') as $projet) { ?>
                 <section>
-                    <img src="img/<?php echo $projet[3]; ?>">
+                    <img src="img/projet/<?php echo $projet[3]; ?>">
 
                     <div>
                         <h2><?php echo $projet[1]; ?></h2>
